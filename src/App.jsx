@@ -1,9 +1,11 @@
 
 import './App.css'
 import ButtonComponent from './Components/ButtonComponent'
-// Import de componentes
-import BotonMultiuso from './Components/BotonMultiuso'
 
+import BotonMultiuso from './Components/BotonMultiuso'
+// Import de componentes: NavBar
+import NavBar from './Components/NavBar'
+import ItemListContainer from './Components/ItemListContainer'
 
 function App() {
 
@@ -17,10 +19,14 @@ function App() {
 
   return (
     <>
-      <h1>Botonga</h1>
+      { /*Coloco la etiqueta del componente */}
+      <NavBar/>
+      <ItemListContainer mensaje = "Bienvenidos a Retrowave Records" />
+
+      {/* <h1>Botonga</h1>
       {/* App le pasa un prop a BotonMultiuso que se llama texto  */}
-      <BotonMultiuso texto="Hola" color="red" onClickFunction={saludar} />
-      <BotonMultiuso texto="Chau" color="green" onClickFunction={despedir}/>
+      {/* <BotonMultiuso texto="Hola" color="red" onClickFunction={saludar} />
+      <BotonMultiuso texto="Chau" color="green" onClickFunction={despedir}/> */} */}
 
     </>
   )
