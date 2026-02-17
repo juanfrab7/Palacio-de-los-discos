@@ -1,0 +1,32 @@
+.btn-sumar {
+  background-color: #4CAF50; 
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-sumar:hover {
+  background-color: #45a049; 
+}
+
+.btn-restar {
+  background-color: #ce0d0d; 
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-restar:hover {
+  background-color: #890c0c; 
+}
+
+.btn-neutro {
+  background-color: grey; 
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-neutro:hover {
+  background-color: rgb(93, 93, 93)
+}

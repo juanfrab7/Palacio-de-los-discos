@@ -1,17 +1,23 @@
+
+/* Hago el css del navbar */
 .nav-container {
 
-  background-color: black;
+  background-color: rgb(65, 31, 159);
   padding: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/*Estilos de los enlaces del navbar*/
 .anchor-nav{
 
     color: whitesmoke;
     font-weight: bold;
     text-decoration: none;
+    width: 50px;
+    height: auto;
+    
 
     cursor: pointer;
 }

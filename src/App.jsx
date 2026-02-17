@@ -1,42 +1,59 @@
 
 import './App.css'
 import ButtonComponent from './Components/ButtonComponent'
-
-import BotonMultiuso from './Components/BotonMultiuso'
-// Import de componentes: NavBar
-import NavBar from './Components/NavBar'
-import ItemListContainer from './Components/ItemListContainer'
+// Importo el ejemplo de la clase 2
 import BotonMultiuso2 from './examples/BotonMultiuso2'
+// Import de componentes de la clase 2: NavBar e ItemCount
+import NavBar from './Components/NavBar'
+import ItemCount from "./Components/ItemCount"
+
+import ItemListContainer from './Components/ItemListContainer'
+
 import FetchCountry from './examples/fetchCountry'
 import FetchApi from './examples/FetchApi'
 
 function App() {
 
   // Las funciones para pasar como props no se definen en la etiqueta, porque es una mala practica
-  // Defino una función
+  // Defino una función por fuera
 
-  const saludar =()=> {
-    alert("Holis")
-  }
+  // Funciones ejemplo clase 2
 
-  const despedir =() => {
-    alert("ciao")
-  }
+  // const saludar =()=> {
+  //   alert("Holis")
+  // }
+
+  // const despedir =() => {
+  //   alert("ciao")
+  // }
+  console.log("app")
 
   return (
+    // Etiqueta fragment
     <>
       { /*Coloco la etiqueta del componente */}
-      <NavBar/>
-      <FetchApi/>
-      <ItemListContainer mensaje = "Bienvenidos a Retrowave Records" />
-
-      {/* App le pasa un prop a BotonMultiuso que se llama texto2  */}
+      {/* Ejemplo clase 2 */}
+      {/* App (el elemento padre) le pasa un prop a BotonMultiuso2 (hijo) que se llama texto2  */}
       {/* Los datos que agrego como props que no son strings, o sea función, booleano, objeto van con llaves */}
+      {/* También le paso por props entre llaves las funciones saludar y despedir */}
+      {/* <BotonMultiuso2 texto2="-" color="red" onClickFunction={saludar} />
+      <BotonMultiuso2 texto2="+" color="green" onClickFunction={despedir} /> */}
+      
+      {/* Componente clase 2 */}
+      <NavBar/>
+      <ItemListContainer mensaje = "Bienvenidos a Retrowave Records" />
+      <ItemCount/>
+
+
+
+      <FetchApi/>
+      
+
+
       {/* <FetchCountry/> */}
 
 
-      <BotonMultiuso2 texto2="Hola" color="red" onClickFunction={saludar} />
-      <BotonMultiuso2 texto2="Chau" color="blue" onClickFunction={despedir} />
+
 
 
       {/* <h1>Botonga</h1>
