@@ -1,12 +1,13 @@
 
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ButtonComponent from './Components/ButtonComponent'
 // Importo el ejemplo de la clase 2
 import BotonMultiuso2 from './examples/BotonMultiuso2'
 // Import de componentes de la clase 2: NavBar e ItemCount
 import NavBar from './Components/NavBar'
 import ItemCount from "./Components/ItemCount"
-
+// Import de componentes de la clase 3:
 import ItemListContainer from './Components/ItemListContainer'
 
 import FetchCountry from './examples/fetchCountry'
@@ -41,19 +42,13 @@ function App() {
       
       {/* Componente clase 2 */}
       <NavBar/>
+      {/* El padre app le manda una prop al componente hijo ItemListContainer  */}
       <ItemListContainer mensaje = "Bienvenidos a Retrowave Records" />
       <ItemCount/>
 
-
-
-      <FetchApi/>
+      {/* <FetchApi/> */}
       
-
-
       {/* <FetchCountry/> */}
-
-
-
 
 
       {/* <h1>Botonga</h1>

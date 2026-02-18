@@ -7,19 +7,19 @@ const productos = [
     {
         id: "01",
         nombreBanda: "ACDC",
-        nombreDisco: "aa",
+        nombreDisco: "Highway to hell",
         description: "hard rock",
         stock: 20,
         price: 25000,
         // La categoría me indica en que parte de la página va a aparecer
         category: "oldies",
         // Todos los productos tienen que tener una imagen
-        img:""
+        img:"../public/acdc-highway-to-hell.jpg"
     },
         {
         id: "02",
         nombreBanda: "ACDC",
-        nombreDisco: "aa",
+        nombreDisco: "Greatest Hits",
         description: "rock",
         stock: 20,
         price: 25000,
@@ -86,8 +86,7 @@ export const getItem = (id) =>{
 
                 let prod = productos.find((prod)=> prod.id ===id)
                 resolve(prod)
-            }
-            
+            }          
         
         }, 1000);
 
