@@ -1,3 +1,5 @@
+// Componente clase 4
+
 // Acá voy a hacer el map
 import React from "react";
 

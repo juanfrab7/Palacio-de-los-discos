@@ -15,7 +15,7 @@ const Item = ({prod}) => {
       <Card.Body>
         <Card.Title>{prod.nombreDisco}</Card.Title>
         <Card.Text>
-          {prod.price}
+          $ {prod.price}
         </Card.Text>
         <Button variant="primary">Go somewhere</Button>
       </Card.Body>

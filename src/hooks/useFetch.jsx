@@ -1,3 +1,5 @@
+// Hook de clase 4
+
 import { useEffect, useState } from "react"
 
 // Un custom Hook es una función que permite reutilizar lógica en varios componentes.

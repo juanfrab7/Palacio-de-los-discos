@@ -10,8 +10,10 @@ import ItemCount from "./Components/ItemCount"
 // Import de componentes de la clase 3:
 import ItemListContainer from './Components/ItemListContainer'
 
+// Import de componentes de la clase 4:
 import FetchCountry from './examples/fetchCountry'
 import FetchApi from './examples/FetchApi'
+import ItemDetailContainer from './Components/ItemDetailContainer';
 
 function App() {
 
@@ -44,11 +46,15 @@ function App() {
       <NavBar/>
       {/* El padre app le manda una prop al componente hijo ItemListContainer  */}
       <ItemListContainer mensaje = "Bienvenidos a Retrowave Records" />
-      <ItemCount/>
+      {/* Componente clase 3 */}
+      {/* <ItemCount/> */}
 
+      {/* Componente clase 4 */}
       {/* <FetchApi/> */}
       
       {/* <FetchCountry/> */}
+      <ItemDetailContainer/>
+
 
 
       {/* <h1>Botonga</h1>

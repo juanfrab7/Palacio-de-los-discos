@@ -52,6 +52,9 @@ let error = false;
 // Esta es una preparación de código para conectar mi proyecto.
 // Se prepara para trabajar con asincronía
 
+// Función exportada de clase 3 para ItemListContainer
+// esta función retorna un array
+
 export const getProducts = () => {
 
     // Retorna una nueva promesa que va a tener la función del callback, el resolve y el reject
@@ -74,7 +77,10 @@ export const getProducts = () => {
     })
 }
 
-//ACÁ VA getItem
+// Función clase 4
+//ACÁ VA getItem. La función lleva como argumento id
+// Esta función retorna un item del array 
+
 export const getItem = (id) =>{
 
     return new Promise((resolve,reject)=>{
@@ -83,13 +89,17 @@ export const getItem = (id) =>{
             if (error){
                 reject("Hubo un error, intente más tardes")
             }else{
+                // Creo una variable prod donde guardo
+                // Hago el método find que recorre el objeto productos
+                // Devuelve el primer elemento que cumpla la condición prod.id === id (argumento de la función)
 
                 let prod = productos.find((prod)=> prod.id ===id)
+                // Uso el resolve dinámico y le pongo lo que encontró en la variable prod
                 resolve(prod)
+
             }          
         
         }, 1000);
-
 
     })
 
