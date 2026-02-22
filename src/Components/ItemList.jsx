@@ -7,16 +7,17 @@
 
 import React from "react";
 import Item from "./Item"
+import { Button } from "react-bootstrap";
 
 // Se pasa la prop data
 const ItemList = ({data}) =>{
 
     return (
         <div style={{display:"flex",justifyContent:"space-around",alignItems:"center",flexWrap:"wrap"}}>
+            {/* esto te muestra todos los productos */}
             {data.map((prod)=> <Item key={prod.id} prod={prod}/>)}
-
+            
         </div>
-
         
     )
 }

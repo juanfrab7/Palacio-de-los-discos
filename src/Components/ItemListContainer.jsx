@@ -4,8 +4,8 @@
 // Es un componente contenedor (smart component), se encarga de hacer la lógica
 
 // Tiene que recibir una prop que se la pasa el padre app
-// Es el encargado de pensar. No hace map. Lo hace itemList
-// Va a llamar a un promesa , la va a procesar con el método then
+// Es el encargado de pensar. No hace map. Lo hace itemList (que es su hijo)
+// Va a llamar a un promesa de ka función getproducts, la va a procesar con el método then
 
 // Para poder guardar los productos del ecommerce voy a tener que usar un estado
 // Para poder procesar y actualizar el estado voy a tener que usar un efecto
@@ -14,6 +14,9 @@
 import { useState,useEffect } from "react"
 import { getProducts } from "../mock/asyncMock"
 import Itemlist from "./ItemList"
+// Componente de clase 5
+import { useParams } from "react-router-dom"
+import Input from "../examples/Input"
 
 const ItemListContainer = (props) => {
 
@@ -44,6 +47,13 @@ const ItemListContainer = (props) => {
     // UseEffect trata mi promesa creada en asyncmock que retorna getProducts
     // O sea cuando llamo a getProducts() se retorna una promesa
     // Dejo el array de dependencias vacío
+
+    // Agregado clase 5 
+    // Uso el hook useParams para leer las rutas dinámicas. En este caso el path /:type
+    // El use param lee el dato que cambia en la url (/:type)
+    // Hago el destructuring
+    const {type} = useParams()
+
     useEffect(()=>{
         // Llamo a la función importada de asynmock getProducts()
         // Pedimos datos del objeto
@@ -53,17 +63,29 @@ const ItemListContainer = (props) => {
         // .then((res)=> console.log(res,"respuesta OK"))
         // En el caso de que quiera guardar la respuesta en un estado
         // Data pasa a guardarse en un estado que arranca con un array vacío
-        .then((res)=> setData(res))
+        .then((res)=> {
+            if (type){
+                setData(res.filter((prod)=> prod.category === type))
+
+            }else{
+                setData(res)
+            }
+        })
         // Atrapamos el error. Si sale mal imprimo el error por consola
+        // Queda a la escucha de type
         .catch((error)=> console.log(error,"error"))
-    },[])
+    },[type])
    
 
     return(
         // Este es el render, es el html que devuelve el componente
         <div>
             
+            {/* Ejemplo de la clase 5 */}
+            {/* <Input/> */}
+
             <h1>{props.mensaje}</h1>
+            <h2>{type && <span>Categoria: {type}</span>}</h2>
             {/* a data le hago el método map y lo guardo en prod. Luego el resultado lo imprimo en un párrafo */}
             {/* prod es una variable que map va a estar usando */}
             {/* Tengo que usar la key para que no me devuelva el error */}

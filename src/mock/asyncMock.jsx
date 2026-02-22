@@ -8,34 +8,64 @@ const productos = [
         id: "01",
         nombreBanda: "ACDC",
         nombreDisco: "Highway to hell",
-        description: "hard rock",
+        description: "Hard rock",
         stock: 20,
         price: 25000,
         // La categoría me indica en que parte de la página va a aparecer
         category: "oldies",
         // Todos los productos tienen que tener una imagen
-        img:"../public/acdc-highway-to-hell.jpg"
+        img:"../acdc-highway-to-hell.jpg"
     },
         {
         id: "02",
         nombreBanda: "ACDC",
-        nombreDisco: "Greatest Hits",
-        description: "rock",
+        nombreDisco: "Fly on the wall",
+        description: "Hard rock",
         stock: 20,
         price: 25000,
         category: "oldies",
-        img: "../public/acdc-greatest-hits.jpg"
+        img: "../acdc-fly-on-the-wall.jpg"
     },
         {
         id: "03",
         nombreBanda: "ACDC",
-        nombreDisco: "aa",
-        description: "rock",
-        stock: 20,
-        price: 25000,
+        nombreDisco: "High Voltage",
+        description: "Hard rock",
+        stock: 50,
+        price: 30000,
         category: "oldies",
-        img:""
-    }
+        img:"../acdc-high-voltage.jpg"
+    },
+        {
+        id: "04",
+        nombreBanda: "Creedence Clearwater Revival",
+        nombreDisco: "Cosmo's Factory",
+        description: "Rock",
+        stock: 70,
+        price: 10000,
+        category: "ofertas",
+        img:"../creedence-cosmos-factory.jpg"
+    },
+        {
+        id: "05",
+        nombreBanda: "Usted Señalemelo",
+        nombreDisco: "Terminos & condiciones",
+        description: "Rock",
+        stock: 250,
+        price: 40000,
+        category: "nuevos",
+        img:"../usted-senalemelo-terminos-&-condiciones.jpg"
+    },
+        {
+        id: "06",
+        nombreBanda: "Creedence Clearwater Revival",
+        nombreDisco: "Green River",
+        description: "Rock",
+        stock: 100,
+        price: 10000,
+        category: "ofertas",
+        img:"../creedence-green-river.jpg"
+        }
 ]
 
 // Acá creo la promesa
@@ -73,7 +103,7 @@ export const getProducts = () => {
             }
 
             
-        }, 3000);
+        }, 1500);
     })
 }
 

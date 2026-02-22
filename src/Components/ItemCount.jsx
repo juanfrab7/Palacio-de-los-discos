@@ -6,7 +6,13 @@ import '../assets/css/ItemCount.css'
 // Importo el hook useState
 import { useState } from "react"
 
-const ItemCount = () =>{
+// Import de librería y componentes de la clase 5: React Router dom
+import {BrowserRouter,Routes,Route, Link} from "react-router-dom"
+
+// Este componente se encarga de contar
+
+// Clase 5. Le hago destructuring a las props que me pasa el padre ItemDetail
+const ItemCount = ({onAdd,stock}) =>{
 
     // Declaro el hook useState
     // Los hooks siempre se usan en componentes
@@ -17,25 +23,42 @@ const ItemCount = () =>{
 
     // Voy a hacer una función para modificar el estado de count
     const sumar = ()=>{
-        setCount(count+1)
+        // El contador suma hasta llegar al valor de stock que tenemos
+        if  (count< stock){
+            setCount(count+1)
+        }
+        
     }
 
     const restar = ()=>{
         if (count >0){
             setCount(count-1)
         }
-        
+    }
+
+    const comprar = ()=>{
+        // Espera el valor que yo le pase. Es el valor de count
+        onAdd(count)
     }
 
     return(
 
-        <div>
-            <button onClick={restar} className={count === 0 ? 'btn-neutro' : 'btn-restar'}>-</button>
-            {/* Uso un span para separar */}
-            {/* escribo el valor de count con llaves al ser codigo de javascript */}
-            <span>{count}</span>
-            <button onClick={sumar} className="btn-sumar">+</button>
+        <div className='counter-container'>
+            <div className='counter-controls'>
 
+                <button onClick={restar} className={count === 0 ? 'btn-neutro' : 'btn-restar'}>-</button>
+
+                {/* Uso un span para separar */}
+                {/* escribo el valor de count con llaves al ser codigo de javascript */}
+                <span className='counter-value'>{count}</span>
+
+                <button onClick={sumar} className="btn-sumar">+</button>
+               
+            </div>
+            <p></p>
+            <button className="btn btn-success buy-btn" onClick={comprar}>Comprar</button>
+            <p></p>
+            <div><Link to="/" className="btn btn-secondary">Volver al home</Link></div>
 
         </div>
     )

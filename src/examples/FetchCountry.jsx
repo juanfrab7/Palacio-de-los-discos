@@ -1,3 +1,5 @@
+// Ejemplo clase 4
+
 import {useEffect} from "react"
 // Creo el componente, lo exporto y lo pongo dentro de app.jsx  dentro del return
 // El hook que uso para el trabajo asíncrono es el useeffect. 

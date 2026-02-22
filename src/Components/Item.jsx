@@ -2,9 +2,12 @@
 
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+// Importo link de la clase 5
+import {Link} from "react-router-dom"
+
 // Este componente muestra información breve del producto que el usuario clickea luego para acceder a detalles
 
-// este item va a ser una card
+// Este item va a ser una card. Importo las cards de bootstrap
 
 // Aca puedo poner en tarjetas los productos con su precio, descripción
 // Recibe props
@@ -14,10 +17,16 @@ const Item = ({prod}) => {
       <Card.Img variant="top" src={prod.img} />
       <Card.Body>
         <Card.Title>{prod.nombreDisco}</Card.Title>
+        <Card.Subtitle>{prod.nombreBanda}</Card.Subtitle>
         <Card.Text>
-          $ {prod.price}
+           {prod.price.toLocaleString('es-AR', { 
+              style: 'currency', 
+              currency: 'ARS', 
+              minimumFractionDigits: 0 
+            })}
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        {/* Configuro mi botón con enlaces Link de react Router dom */}
+        <Link className="btn btn-success" to={`/item/${prod.id}`}>Comprar</Link>
       </Card.Body>
     </Card>
 
