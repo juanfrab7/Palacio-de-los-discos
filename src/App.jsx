@@ -19,6 +19,10 @@ import ItemDetailContainer from './Components/ItemDetailContainer';
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import Error from "./Components/Error"
 
+// Import de componetes de la clase 6: Proveedor del contexto. Sus hijos pueden consultar
+import { CartProvider } from './context/CartContext'
+import CartContainer from "./Components/CartContainer"
+
 
 function App() {
 
@@ -44,52 +48,58 @@ function App() {
     // sin que renderice
     <BrowserRouter>
 
-      
-      {/* Ejemplo clase 2 */}
-      {/* App (el elemento padre) le pasa un prop a BotonMultiuso2 (hijo) que se llama texto2  */}
-      {/* Los datos que agrego como props que no son strings, o sea función, booleano, objeto van con llaves */}
-      {/* También le paso por props entre llaves las funciones saludar y despedir */}
-      { /*Coloco la etiqueta del componente */}
-      {/* <BotonMultiuso2 texto2="-" color="red" onClickFunction={saludar} />
-      <BotonMultiuso2 texto2="+" color="green" onClickFunction={despedir} /> */}
-      
-      {/* Componente clase 2 */}
-      {/* El navbar siempre tiene que estar visible, por eso lo coloco por fuera de routes */}
-      <NavBar/>
+      <CartProvider>
+        {/* Ejemplo clase 2 */}
+        {/* App (el elemento padre) le pasa un prop a BotonMultiuso2 (hijo) que se llama texto2  */}
+        {/* Los datos que agrego como props que no son strings, o sea función, booleano, objeto van con llaves */}
+        {/* También le paso por props entre llaves las funciones saludar y despedir */}
+        { /*Coloco la etiqueta del componente */}
+        {/* <BotonMultiuso2 texto2="-" color="red" onClickFunction={saludar} />
+        <BotonMultiuso2 texto2="+" color="green" onClickFunction={despedir} /> */}
+
+        {/* Componente clase 6 */}
+        {/* Acá envuelvo el contexto */}
+        
+        {/* Componente clase 2 */}
+        {/* El navbar siempre tiene que estar visible, por eso lo coloco por fuera de routes */}
+        <NavBar/>
 
 
 
-      {/* El padre app le manda una prop al componente hijo ItemListContainer  */}
-      {/* <ItemListContainer mensaje = "Bienvenidos a Retrowave Records" /> */}
-      
-      {/* Componente clase 3 */}
-      {/* <ItemCount/> */}
+        {/* El padre app le manda una prop al componente hijo ItemListContainer  */}
+        {/* <ItemListContainer mensaje = "Bienvenidos a Retrowave Records" /> */}
+        
+        {/* Componente clase 3 */}
+        {/* <ItemCount/> */}
 
-      {/* Componente clase 4 */}
-      {/* <FetchApi/> */}
-      {/* <FetchCountry/> */}
-      {/* <ItemDetailContainer/> */}
+        {/* Componente clase 4 */}
+        {/* <FetchApi/> */}
+        {/* <FetchCountry/> */}
+        {/* <ItemDetailContainer/> */}
 
-      {/* <h1>Botonga</h1>
-      {/* App le pasa un prop a BotonMultiuso que se llama texto  */}
-      {/* <BotonMultiuso texto="Hola" color="red" onClickFunction={saludar} />
-      <BotonMultiuso texto="Chau" color="green" onClickFunction={despedir}/> */} 
+        {/* <h1>Botonga</h1>
+        {/* App le pasa un prop a BotonMultiuso que se llama texto  */}
+        {/* <BotonMultiuso texto="Hola" color="red" onClickFunction={saludar} />
+        <BotonMultiuso texto="Chau" color="green" onClickFunction={despedir}/> */} 
 
-      {/* Componente clase 5 */}
-      {/* Routes es el agrupador de las rutas */}
-      <Routes>
-        {/* Route declara cada ruta */}
-        {/* Cuando pongo la barra sola "/" es para mencionar el index */}
-        <Route path='/' element={<ItemListContainer mensaje = "Bienvenidos a Retrowave Records" />}/>
-        {/* Acá filtro por categoría con category y type. Ese filtro lo uso en ItemListContainer con Params */}
-        <Route path='/category/:type' element={<ItemListContainer mensaje = "Bienvenidos a Retrowave Records" />}/>
-        {/* Esta ruta enlaza con item y con una ruta con id dinamico usando :id */}
-        {/* Para las categorías tengo que reutilizar ItemListContainer */}
+        {/* Componente clase 5 */}
+        {/* Routes es el agrupador de las rutas */}
+        <Routes>
+          {/* Route declara cada ruta */}
+          {/* Cuando pongo la barra sola "/" es para mencionar el index */}
+          <Route path='/' element={<ItemListContainer mensaje = "Bienvenidos a Retrowave Records" />}/>
+          {/* Acá filtro por categoría con category y type. Ese filtro lo uso en ItemListContainer con Params */}
+          <Route path='/category/:type' element={<ItemListContainer mensaje = "Bienvenidos a Retrowave Records" />}/>
+          {/* Esta ruta enlaza con item y con una ruta con id dinamico usando :id */}
+          {/* Para las categorías tengo que reutilizar ItemListContainer */}
 
-        <Route path='/item/:id' element={<ItemDetailContainer/>}/>
-        {/* Este es el enlace para cuando se ingresa una url con error. Para ello me valgo del * asterisco */}
-        <Route path="*" element={<Error/>}/>
-      </Routes>
+          <Route path='/item/:id' element={<ItemDetailContainer/>}/>
+          {/* Este es la ruta para  ir al carrito*/}
+          <Route path='/cart' element={ <CartContainer/> }/>
+          {/* Este es el enlace para cuando se ingresa una url con error. Para ello me valgo del * asterisco */}
+          <Route path='*' element={<Error/>}/>
+        </Routes>
+      </CartProvider>
 
     </BrowserRouter>
   )

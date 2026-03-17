@@ -17,6 +17,8 @@ import Itemlist from "./ItemList"
 // Componente de clase 5
 import { useParams } from "react-router-dom"
 import Input from "../examples/Input"
+// Componente de la clase 6
+import Loader from "./Loader"
 
 const ItemListContainer = (props) => {
 
@@ -48,6 +50,10 @@ const ItemListContainer = (props) => {
     // O sea cuando llamo a getProducts() se retorna una promesa
     // Dejo el array de dependencias vacío
 
+    // Agregado clase 6
+    // Para el Loader
+    const [loading,setLoading] = useState(false)
+
     // Agregado clase 5 
     // Uso el hook useParams para leer las rutas dinámicas. En este caso el path /:type
     // El use param lee el dato que cambia en la url (/:type)
@@ -55,6 +61,8 @@ const ItemListContainer = (props) => {
     const {type} = useParams()
 
     useEffect(()=>{
+
+        setLoading(true)
         // Llamo a la función importada de asynmock getProducts()
         // Pedimos datos del objeto
         getProducts()
@@ -74,12 +82,23 @@ const ItemListContainer = (props) => {
         // Atrapamos el error. Si sale mal imprimo el error por consola
         // Queda a la escucha de type
         .catch((error)=> console.log(error,"error"))
+        // Si cae en el catch o en el then tengo que apagar el Loader
+        .finally(()=>setLoading(false))
     },[type])
    
 
     return(
+        // Hago un render condicional. Loading por defecto es False
+        // Si es verdadero mientras se cumple la promesa se muestra el spinner
+        // Cuando termina muestra la categoría
+        <>
+        {
+            loading 
+            // Paso una prop, si type existe lo asocia a la categoría, sino todos los discos
+            ? <Loader text={type ? `Cargando categoría ${type}` : 'Cargando todos el catalogo 💿'}/>
+            :
         // Este es el render, es el html que devuelve el componente
-        <div>
+            <div>
             
             {/* Ejemplo de la clase 5 */}
             {/* <Input/> */}
@@ -95,7 +114,9 @@ const ItemListContainer = (props) => {
             {/* el map no lo hace itemListContainer. Le pasa la prop a ItemList  */}
             {/* le paso por prop el array data */}
             <Itemlist data={data}/>
-        </div>
+            </div>
+        }
+        </>
     )
 }
 

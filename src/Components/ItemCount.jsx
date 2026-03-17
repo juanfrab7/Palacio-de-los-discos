@@ -1,3 +1,4 @@
+// ItemCount
 // Componente clase 2
 
 //importo css de la carpeta assets
@@ -9,7 +10,7 @@ import { useState } from "react"
 // Import de librería y componentes de la clase 5: React Router dom
 import {BrowserRouter,Routes,Route, Link} from "react-router-dom"
 
-// Este componente se encarga de contar
+// Este componente se encarga de contar. Muestra el botón comprar
 
 // Clase 5. Le hago destructuring a las props que me pasa el padre ItemDetail
 const ItemCount = ({onAdd,stock}) =>{
@@ -25,6 +26,7 @@ const ItemCount = ({onAdd,stock}) =>{
     const sumar = ()=>{
         // El contador suma hasta llegar al valor de stock que tenemos
         if  (count< stock){
+            // Si no supera al stock sigue sumando
             setCount(count+1)
         }
         
@@ -38,12 +40,20 @@ const ItemCount = ({onAdd,stock}) =>{
 
     const comprar = ()=>{
         // Espera el valor que yo le pase. Es el valor de count
+        // Llama a onAdd que está en ItemDetail. Lo llama con el count del hook useState
         onAdd(count)
     }
 
     return(
-
-        <div className='counter-container'>
+        // Uso un fragment
+        
+          <>
+            {
+                stock === 0
+                ? <p>No hay stocl</p>
+                :
+                /*Según que haya en el stock muestra un html u otro */
+            <div className='counter-container'>
             <div className='counter-controls'>
 
                 <button onClick={restar} className={count === 0 ? 'btn-neutro' : 'btn-restar'}>-</button>
@@ -56,11 +66,20 @@ const ItemCount = ({onAdd,stock}) =>{
                
             </div>
             <p></p>
-            <button className="btn btn-success buy-btn" onClick={comprar}>Comprar</button>
+            {/* El botón desaparece si el stock es igual a cero */}
+            <button className="btn btn-success buy-btn" onClick={comprar} disabled={stock === 0 || count === 0}>Comprar</button>
             <p></p>
             <div><Link to="/" className="btn btn-secondary">Volver al home</Link></div>
 
-        </div>
+            </div>
+            }
+          
+          </>
+
+        
+        
+        
+
     )
 } 
 

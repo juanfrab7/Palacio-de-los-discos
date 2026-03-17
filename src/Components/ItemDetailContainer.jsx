@@ -1,3 +1,4 @@
+// ItemDetailContainer
 // Componente clase 4
 
 // Funciona parecido a ItemListContainer
@@ -18,11 +19,16 @@ import { getItem } from "../mock/asyncMock"
 import ItemDetail from "./ItemDetail"
 // Hook clase 5
 import { useParams } from "react-router-dom"
+// Componente de la clase 6
+import Loader from "./Loader"
 
 const ItemDetailContainer = () =>{
 
         // Uso un useState y lo inicializo con un objeto vacío
         const [detalle,setDetalle] = useState({})
+        // Componente de la clase 6. Funciona igual que el loader de ItemListContainer
+        // Lo inicializo en True cuando carga el componente
+        const [cargando,setCargando] = useState(true)
         // param tendrá el valor que esté en la url
         // Hago un destructuring y me quedo con el id. id tiene que quedar igual como lo declaré en app
         const {id} = useParams()
@@ -40,28 +46,32 @@ const ItemDetailContainer = () =>{
             // A la respuesta que es un objeto Lo guardo en el hook useState
             .then((res)=> setDetalle(res))
             .catch((error)=> console.log(error))
+            // Apago el cargando luego de que termine la promesa
+            .finally(()=> setCargando(false))
 
 
         },[id])
 
     return(
+    <div>
+      {
+        cargando 
+        // Mientras la promesa se está cumpliendo me manda un mensaje de Cargando disco
+        ? <Loader text={`Cargando disco`}/>
+        :         
+        // Cuando se cumple la promesa, sale del spinner y se muestra el disco
         // Retorna ItemDetail con la prop detalle que viene del hook UseState. 
         // detalle lo tengo que llevar a ItemDetail
         // detalle es un objeto
         <div>
+            {/* Muestro el componente disco */}
             <ItemDetail detalle = {detalle}/>
         </div>
+      }
+    </div>
+
     )
 }
 
-// const getItem = () =>{
-
-//     // Retorna con una promesa... hook
-// }
-
-// function ItemDetailContainer = {
-
-//     pass
-// }
 
 export default ItemDetailContainer

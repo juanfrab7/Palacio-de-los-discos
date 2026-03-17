@@ -1,4 +1,6 @@
+//Item
 // Componente de la clase 3
+// Muestra los elementos en venta del sitio en cards
 
 import React from "react";
 import { Button, Card } from "react-bootstrap";
