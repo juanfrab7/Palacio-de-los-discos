@@ -16,9 +16,14 @@ import { getProducts } from "../mock/asyncMock"
 import Itemlist from "./ItemList"
 // Componente de clase 5
 import { useParams } from "react-router-dom"
+// Componente ejemplo de la clase 5
 import Input from "../examples/Input"
 // Componente de la clase 6
 import Loader from "./Loader"
+
+// Componente de la clase 7
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
+import { db } from "../service/firebase"
 
 const ItemListContainer = (props) => {
 
@@ -60,31 +65,67 @@ const ItemListContainer = (props) => {
     // Hago el destructuring
     const {type} = useParams()
 
+    // FIREBASE
     useEffect(()=>{
 
         setLoading(true)
-        // Llamo a la función importada de asynmock getProducts()
-        // Pedimos datos del objeto
-        getProducts()
-        // Tratamos la respuesta. A la respuesta la veo por consola.
-        // Este es el caso que la respuesta sea satisfactoria imprimo en consola
-        // .then((res)=> console.log(res,"respuesta OK"))
-        // En el caso de que quiera guardar la respuesta en un estado
-        // Data pasa a guardarse en un estado que arranca con un array vacío
-        .then((res)=> {
-            if (type){
-                setData(res.filter((prod)=> prod.category === type))
+  
+        
 
-            }else{
-                setData(res)
+        // Nos conectamos a nuestra coleccion. Filtro por categoría
+
+        const prodColl= type ? query(collection(db, "discos"),where("category", "==", type)) :collection(db, "discos")
+        // Traigo todos los documentos. 
+        getDocs(prodColl)
+        // getDocs Nos devuelve una promesa por lo que hago then
+        .then((res)=>{
+            // Desmenuzo los datos que me vienen en res que es un array
+            // Mapea/recorre cada documento
+           const list = res.docs.map((doc)=>{
+            return {
+                // Devuelve el id
+                // y el resto lo agrego con un spread
+                // Con data accedo y extraigo los valores del documento
+                id:doc.id,
+                ...doc.data()
             }
+           })
+           // a la variable data la cargo con lo obtenido en list luego del mapeo
+           console.log(list)
+           setData(list)
         })
-        // Atrapamos el error. Si sale mal imprimo el error por consola
-        // Queda a la escucha de type
         .catch((error)=> console.log(error,"error"))
         // Si cae en el catch o en el then tengo que apagar el Loader
         .finally(()=>setLoading(false))
     },[type])
+
+    // PROMESA
+
+    // useEffect(()=>{
+
+    //     setLoading(true)
+    //     // Llamo a la función importada de asynmock getProducts()
+    //     // Pedimos datos del objeto
+    //     getProducts()
+    //     // Tratamos la respuesta. A la respuesta la veo por consola.
+    //     // Este es el caso que la respuesta sea satisfactoria imprimo en consola
+    //     // .then((res)=> console.log(res,"respuesta OK"))
+    //     // En el caso de que quiera guardar la respuesta en un estado
+    //     // Data pasa a guardarse en un estado que arranca con un array vacío
+    //     .then((res)=> {
+    //         if (type){
+    //             setData(res.filter((prod)=> prod.category === type))
+
+    //         }else{
+    //             setData(res)
+    //         }
+    //     })
+    //     // Atrapamos el error. Si sale mal imprimo el error por consola
+    //     // Queda a la escucha de type
+    //     .catch((error)=> console.log(error,"error"))
+    //     // Si cae en el catch o en el then tengo que apagar el Loader
+    //     .finally(()=>setLoading(false))
+    // },[type])
    
 
     return(

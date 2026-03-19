@@ -18,9 +18,13 @@ import {useEffect,useState} from "react"
 import { getItem } from "../mock/asyncMock"
 import ItemDetail from "./ItemDetail"
 // Hook clase 5
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 // Componente de la clase 6
 import Loader from "./Loader"
+// Componente de la clase 7
+import { doc, getDoc } from 'firebase/firestore'
+import { db } from '../service/firebase'
+import { TbRubberStampOff } from 'react-icons/tb'
 
 const ItemDetailContainer = () =>{
 
@@ -29,28 +33,61 @@ const ItemDetailContainer = () =>{
         // Componente de la clase 6. Funciona igual que el loader de ItemListContainer
         // Lo inicializo en True cuando carga el componente
         const [cargando,setCargando] = useState(true)
+        // Hook de la clase 7. Para asegurarme que exista el id
+        const [notExist, setNotExist]= useState(null)
         // param tendrá el valor que esté en la url
         // Hago un destructuring y me quedo con el id. id tiene que quedar igual como lo declaré en app
         const {id} = useParams()
         
         // Cuando se monte el componente, llamamos una sola vez a la función getitem. 
         // Se deja el Array de dependencias vacío para que lo haga solo cuando se monte el componente
-        
+
+        // Promesa ajustada a los documentos de Firebase
         useEffect(()=>{
-            // Clase 4: Llamo a la función getItem con el argumento hardcodeado de id = "02"
-            // getItem("02")
-            // Clase 5: Traigo el id del useParams y lo pongo como argumento en la función getItem
-            // Clase 5: El useEffect queda a la escuchar del cambio de el id
-            getItem(id)
-            // getItem retorna una promesa. 
-            // A la respuesta que es un objeto Lo guardo en el hook useState
-            .then((res)=> setDetalle(res))
-            .catch((error)=> console.log(error))
-            // Apago el cargando luego de que termine la promesa
-            .finally(()=> setCargando(false))
+              // Hago el método doc. Acá se especifica además de la colección el id
+              const docRef = doc(db, "discos", id)
+              // Acá pide el dato de un array en base a su id
+              getDoc(docRef)
+              .then((res)=> {
+                // Pregunto si res.data existe
+                if(res.data()){
+                  // La respuesta no trae un array
+                  setDetalle({id: res.id, ...res.data()})
+                }else{
+                  setNotExist(true)
+                }
+              })
+                .catch((error)=> console.log(error))
+                .finally(()=> setCargando(false))
+            },[id])
+        
+        // Promesa original
+        // useEffect(()=>{
+        //     // Clase 4: Llamo a la función getItem con el argumento hardcodeado de id = "02"
+        //     // getItem("02")
+        //     // Clase 5: Traigo el id del useParams y lo pongo como argumento en la función getItem
+        //     // Clase 5: El useEffect queda a la escuchar del cambio de el id
+        //     getItem(id)
+        //     // getItem retorna una promesa. 
+        //     // A la respuesta que es un objeto Lo guardo en el hook useState
+        //     .then((res)=> setDetalle(res))
+        //     .catch((error)=> console.log(error))
+        //     // Apago el cargando luego de que termine la promesa
+        //     .finally(()=> setCargando(false))
 
 
-        },[id])
+        // },[id])
+
+    // En caso de que not existe quede en true
+    if(notExist){
+      return (
+        // retorno por pantalla un mensaje
+        <div>
+          <h2>El producto no Existe!</h2>
+          <Link className='btn btn-dark' to='/'>Volver a Home</Link>
+        </div>
+      )
+    }
 
     return(
     <div>
