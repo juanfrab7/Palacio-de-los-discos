@@ -1,0 +1,84 @@
+/* Contenedor de botones finales */
+.cart-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Asegura que ambos tengan el mismo alto */
+    gap: 15px; /* Espacio entre botones */
+    margin-top: 2rem;
+    width: 100%;
+}
+
+/* Base común para ambos botones */
+.btn-custom {
+    flex: 1; /* Hace que ambos ocupen el mismo ancho proporcional */
+    padding: 15px; /* Aumentamos el padding para que sean más grandes */
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none; /* Quita el subrayado del Link */
+    border: none;
+    transition: all 0.3s ease;
+    display: flex; /* Para centrar texto internamente */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn-vaciar {
+    background-color: #dc3545;
+    color: white !important; /* Forzamos color para el Link */
+}
+
+.btn-finalizar {
+    background-color: #198754;
+    color: white !important;
+}
+
+.btn-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    filter: brightness(1.1);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.cart-item-info {
+    display: flex;
+    flex: 1;
+    justify-content: space-around; /* Reparte los datos equitativamente */
+    align-items: center;
+    margin: 0 2rem; /* Espacio entre la imagen y el botón de borrar */
+    gap: 20px; /* Espacio mínimo garantizado entre cada dato */
+}
+
+/* Estilo individual para cada bloque de dato (Producto, Precio, etc.) */
+.cart-data-block {
+    display: flex;
+    flex-direction: column; /* Pone el título arriba del valor */
+    align-items: center;
+    min-width: 100px;
+}
+
+.cart-data-block strong {
+    color: #666;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.cart-data-block span {
+    font-size: 1.1rem;
+    font-weight: 500;
+}

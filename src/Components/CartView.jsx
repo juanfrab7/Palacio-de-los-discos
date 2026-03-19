@@ -5,6 +5,7 @@ import React, { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
 // Para enlace formulario 
 import { Link } from 'react-router-dom'
+import './CartView.css';
 
 const CartView = () => {
   // Me traigo los datos, el clear para borrar todo el carrito y remove para borrar un elemento
@@ -12,37 +13,58 @@ const CartView = () => {
   const {cart, clear, removeItem, total}= useContext(CartContext)
   // Acá muestro el carrito
   return (
-    <div>
-      <h1>Carrito de compras online 💿</h1>
+    <div className="cart-container">
+      <h1 className="cart-title">Carrito de compras online 💿</h1>
 
-    <div>
+    <div className="cart-list">
       
       { // Hago un map, y por cada componente muestro un div con los detalles
         cart.map((compra)=> (
-          <div key={compra.id} style={{display:'flex', justifyContent:'space-between', alignItems:'center', width:'100%', padding:'2rem'}}>
+          <div key={compra.id} className="cart-item">
             <img src={compra.img} alt={compra.name} style={{width:'12rem'}}/>
-            <span><strong>Producto:</strong> {compra.nombreDisco}</span>
-            <span><strong>Precio:</strong> {compra.price?.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })}</span>
-            <span><strong>Cantidad:</strong> {compra.quantity}</span>
-            {/* Calculo el total operando con compra.price y compra.quantity */}
-            <span><strong>Total:</strong> {(compra.quantity * compra.price).toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })}</span>
+            <div className="cart-item-info">
+              <div className="cart-data-block">
+                <strong>Producto:</strong>
+                <span>{compra.nombreDisco}</span>
+              </div>
+
+              <div className="cart-data-block">
+                <strong>Precio:</strong>
+                <span>{compra.price?.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })}</span>
+              </div>
+
+              <div className="cart-data-block">
+                <strong>Cantidad:</strong>
+                <span>{compra.quantity}</span>
+              </div>
+
+              {/* Calculo el total operando con compra.price y compra.quantity */}
+              <div className="cart-data-block">
+                <strong>Subtotal:</strong>
+                <span>{(compra.quantity * compra.price).toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })}</span>
+              </div>
+
+              
+              
+            </div>
             {/* Botón para eliminar un item. Llamo a una función anónima y borro compra.id */}
-            <button className='btn btn-danger' onClick={()=> removeItem(compra.id)}>X</button>
+            <button className='btn btn-danger' onClick={()=> removeItem(compra.id)}>ELIMINAR</button>
           </div>
         ))
       }
     </div>
+
     {/* Función clase 7*/}
     {/* Total es una función, no una variable */}
-    <span>Total a pagar: ${total().toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })}</span>
+    <span className="cart-total-display">Total a pagar: {total().toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })}</span>
 
     {/* Muestro los botones de Vaciar el carrito y terminar compra */}
-    <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', width:'80%', padding:'2rem'}}>
+    <div className="cart-buttons-container">
       {/* se usa la función clear cuando presiono el botón Vaciar Carrito */}
-      <button className='btn btn-danger' onClick={clear}>Vaciar carrito</button>
+      <button className="btn-custom btn-vaciar" onClick={clear}>VACIAR CARRITO</button>
       {/* <button className='btn btn-success'>Terminar compra</button> */}
-      {/* Enlace para terminar la compra */}
-      <Link className='btn btn-success' to='/checkout'>Terminar compra</Link>
+      {/* Enlace para terminar la compra -> Lleva al checkout */}
+      <Link className="btn-custom btn-finalizar" to='/checkout'>Terminar compra</Link>
     </div>
     </div>
   )

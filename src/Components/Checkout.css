@@ -1,0 +1,60 @@
+/* Checkout.css */
+
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f8f9fa; 
+    border-radius: 15px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #6c757d;
+    padding-bottom: 10px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 12px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto Neón cuando el usuario hace clic (Focus) */
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.error-msg {
+    color: #dc3545;
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: block;
+    text-align: center;
+}
