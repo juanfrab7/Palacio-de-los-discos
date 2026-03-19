@@ -23,6 +23,9 @@ import Error from "./Components/Error"
 import { CartProvider } from './context/CartContext'
 import CartContainer from "./Components/CartContainer"
 
+// Import de componentes de la clase 7: Pantalla de compra
+import Checkout from './Components/CheckOut2';
+
 
 function App() {
 
@@ -96,6 +99,8 @@ function App() {
           <Route path='/item/:id' element={<ItemDetailContainer/>}/>
           {/* Este es la ruta para  ir al carrito*/}
           <Route path='/cart' element={ <CartContainer/> }/>
+          {/* Este es el enlace para ir a la pantalla de compra */}
+          <Route path='/checkout' element={ <Checkout/> }/>
           {/* Este es el enlace para cuando se ingresa una url con error. Para ello me valgo del * asterisco */}
           <Route path='*' element={<Error/>}/>
         </Routes>

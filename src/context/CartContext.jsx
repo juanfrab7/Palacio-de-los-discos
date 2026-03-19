@@ -92,10 +92,23 @@ export const CartProvider = ({children}) =>{
 
     // Clase 7
     // Método de cantidad total de items
-    // cartQuantity
+    // Este método me permite calcular cuantos items hay en el carrito
+    const cartQuantity = ()=> {
+        // Uso el método reduce que permite recorrer un array completo y transformarlo en un único valor 
+        // Optimiza el proceso porque lo hace en una sola línea
+        // acc es el contador. Cuenta a medida que se recorre el ciclo. Arranca en cero, se define luego de la suma
+        // prod es el elemento del ciclo que se recorre
+        // Lo llevo a CartWidget
+        return cart.reduce((acc, prod)=> acc += prod.quantity, 0)
+        }
 
     // Método de total a pagar
-    // total
+    // Uso reduce de igual forma que en cartQuantity
+    // Lo llevo a CartView con el use context
+    const total = ()=> {
+        return cart.reduce((acc, prod)=> acc += (prod.quantity * prod.price),0)
+    }
+    
     
     return(
         // Se recibe una prop que se llama value. 
@@ -107,7 +120,7 @@ export const CartProvider = ({children}) =>{
         // Ahí le puedo hacer destructuring y le saco los datos más fácil
 
         
-        <CartContext.Provider value={{cart,addItem,clear,removeItem,itemQuantity}}>
+        <CartContext.Provider value={{cart,addItem,clear,removeItem,itemQuantity,cartQuantity,total}}>
             {/* adentro del provider va los que tienen permiso, lo que el provider envuelva */}
             {/* lo hago dinámico con children, todo lo que el provider envuelva lo agarra children */}
 

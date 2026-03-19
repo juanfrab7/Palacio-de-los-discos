@@ -12,13 +12,15 @@ import { CartContext } from "../context/CartContext"
 const CartWidget = () => {
 
     // Destructuring de cart. El NavBar está dentro de cartProvider
-    const {cart} = useContext(CartContext)
+    // Me traigo cartQuantity (la cantidad de elementos del carrito)
+    const {cart,cartQuantity} = useContext(CartContext)
     return(
         <div>
             {/* logo del carrito */}
             <span>🛒</span>
             {/* Burbuja de notificación: numero estático por el momento */}
-            <span style={{color: 'whitesmoke',backgroundColor:"red"}}>5</span>
+            {/* <span style={{color: 'whitesmoke',backgroundColor:"red"}}>{cart.length > 0 &&  <Badge bg='danger'>{cartQty()}</Badge>}</span> */}
+            {cart.length > 0 && <span style={{color: 'whitesmoke',backgroundColor:"red"}}>{cartQuantity()}</span>}
         </div>
     )
 }
