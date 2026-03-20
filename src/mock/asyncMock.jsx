@@ -3,9 +3,9 @@
 // Nos sirve para simular los datos de una api
 
 // Voy a crear un array que voy a usar en una promesa
-const productos = [
+export const productos = [
     {
-        id: "01",
+        
         nombreBanda: "ACDC",
         nombreDisco: "Highway to hell",
         description: "Hard rock",
@@ -16,8 +16,9 @@ const productos = [
         // Todos los productos tienen que tener una imagen
         img:"../acdc-highway-to-hell.jpg"
     },
+
         {
-        id: "02",
+        
         nombreBanda: "ACDC",
         nombreDisco: "Fly on the wall",
         description: "Hard rock",
@@ -27,7 +28,7 @@ const productos = [
         img: "../acdc-fly-on-the-wall.jpg"
     },
         {
-        id: "03",
+        
         nombreBanda: "ACDC",
         nombreDisco: "High Voltage",
         description: "Hard rock",
@@ -37,7 +38,7 @@ const productos = [
         img:"../acdc-high-voltage.jpg"
     },
         {
-        id: "04",
+        
         nombreBanda: "Creedence Clearwater Revival",
         nombreDisco: "Cosmo's Factory",
         description: "Rock",
@@ -47,7 +48,7 @@ const productos = [
         img:"../creedence-cosmos-factory.jpg"
     },
         {
-        id: "05",
+        
         nombreBanda: "Usted Señalemelo",
         nombreDisco: "Terminos & condiciones",
         description: "Rock",
@@ -57,7 +58,7 @@ const productos = [
         img:"../usted-senalemelo-terminos-&-condiciones.jpg"
     },
         {
-        id: "06",
+        
         nombreBanda: "Creedence Clearwater Revival",
         nombreDisco: "Green River",
         description: "Rock",
@@ -65,7 +66,37 @@ const productos = [
         price: 10000,
         category: "ofertas",
         img:"../creedence-green-river.jpg"
-        }
+    },
+        {
+    
+    nombreBanda: "Kiss",
+    nombreDisco: "Lick It Up",
+    description: "Rock",
+    stock: 120,
+    price: 15000,
+    category: "ofertas",
+    img:"../kiss-lick-it-up.jpg"
+    },
+                {
+    
+    nombreBanda: "Kiss",
+    nombreDisco: "Love Gun",
+    description: "Rock",
+    stock: 80,
+    price: 10000,
+    category: "oldies",
+    img:"../kiss-love-gun.jpg"
+    },
+            {
+   
+    nombreBanda: "The Smiths",
+    nombreDisco: "Meat is Murder",
+    description: "Rock",
+    stock: 100,
+    price: 18000,
+    category: "ofertas",
+    img:"../the-smiths-meat-is-murder.jpg"
+    }
 ]
 
 // Acá creo la promesa
@@ -108,7 +139,7 @@ export const getProducts = () => {
 }
 
 // Función clase 4
-//ACÁ VA getItem. La función lleva como argumento id
+// ACÁ VA getItem. La función lleva como argumento id
 // Esta función retorna un item del array 
 
 export const getItem = (id) =>{
@@ -132,5 +163,5 @@ export const getItem = (id) =>{
         }, 1000);
 
     })
-
 }
+

@@ -12,7 +12,7 @@
 // Para ello importo el useState y el useEffect
 
 import { useState,useEffect } from "react"
-import { getProducts } from "../mock/asyncMock"
+
 import Itemlist from "./ItemList"
 // Componente de clase 5
 import { useParams } from "react-router-dom"
@@ -24,6 +24,8 @@ import Loader from "./Loader"
 // Componente de la clase 7
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "../service/firebase"
+import { getProducts, productos } from "../mock/asyncMock"
+
 
 const ItemListContainer = (props) => {
 
@@ -127,12 +129,18 @@ const ItemListContainer = (props) => {
     //     .finally(()=>setLoading(false))
     // },[type])
    
+    const subirDataAFirebase = () => {
+        console.log('SUBIENDO DATA...')
+        const prodCollec = collection(db, 'discos')
+        productos.map((prod) => addDoc(prodCollec, prod))
+    }
 
     return(
         // Hago un render condicional. Loading por defecto es False
         // Si es verdadero mientras se cumple la promesa se muestra el spinner
         // Cuando termina muestra la categoría
         <>
+        
         {
             loading 
             // Paso una prop, si type existe lo asocia a la categoría, sino todos los discos
@@ -140,6 +148,7 @@ const ItemListContainer = (props) => {
             :
         // Este es el render, es el html que devuelve el componente
             <div>
+            <button onClick={subirDataAFirebase}>SUBIR DATA</button>
             
             {/* Ejemplo de la clase 5 */}
             {/* <Input/> */}

@@ -82,3 +82,31 @@
     font-size: 1.1rem;
     font-weight: 500;
 }
+
+/* Contenedor para alinear el bloque a la derecha */
+.cart-total-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2rem 1.5rem;
+    border-top: 1px solid #eee; /* Línea divisoria fina */
+}
+
+/* El bloque del total con el MISMO formato que tus productos */
+.cart-total-display {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; /* Centrado igual que cart-data-block */
+    min-width: 100px;
+}
+
+.cart-total-display strong {
+    color: #666;
+    font-size: 0.85rem;
+    text-transform: uppercase; /* Mayúsculas obligatorias */
+    margin-bottom: 4px;
+}
+
+.cart-total-display span {
+    font-size: 1.1rem; /* Mismo tamaño que tus otros datos */
+    font-weight: 500;
+}

@@ -56,8 +56,11 @@ const CartView = () => {
 
     {/* Función clase 7*/}
     {/* Total es una función, no una variable */}
-    <span className="cart-total-display">Total a pagar: {total().toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })}</span>
-
+    <div className="cart-total-container">
+      <div className="cart-total-display">
+    <span ><strong>Total a pagar:</strong> {total().toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })}</span>
+      </div>
+    </div>
     {/* Muestro los botones de Vaciar el carrito y terminar compra */}
     <div className="cart-buttons-container">
       {/* se usa la función clear cuando presiono el botón Vaciar Carrito */}

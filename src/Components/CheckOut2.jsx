@@ -24,7 +24,7 @@ const Checkout = () => {
     // Necesito del carrito y de estas  funciones, por eso las llamo con context
     const {cart, total, clear}= useContext(CartContext)
 
-    // Función buyerData
+    // Función buyerData. Objeto dinámico de Javascript concatenado con un estado de React
     const buyerData = (e)=>{
         setBuyer(
             {
