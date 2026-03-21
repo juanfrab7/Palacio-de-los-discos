@@ -18,6 +18,7 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 // Para ir al carrito
 import { Link } from 'react-router-dom'
+import './ItemDetail.css';
 
 // Esto viene por props de ItemDetailContainer
 const ItemDetail = ({detalle}) =>{
@@ -54,21 +55,49 @@ const ItemDetail = ({detalle}) =>{
     const stockActualizado = detalle.stock - itemQuantity(detalle.id)
 
     return(
-        <div>
-            {/* Se van a observar datos que vienen del asyncMock */}
-            <h1>Detalle de {detalle.nombreDisco}</h1> 
-            <img src={detalle.img} alt={detalle.nombreDisco} />  
-            <p>Banda: {detalle.nombreBanda}</p>
-            <p>Genero: {detalle.description}</p> 
-            <p>Precio: {detalle.price?.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })}</p>
-            <p>Stock disponible: {stockActualizado}</p>
-            {/* Acá va el contador */}
-            {/* Clase 5 le paso la función onAdd por prop a ItemCount y el stock */}
-            {/* Esto lo tengo que tomar en ItemCount */}
+        
+        <div className="detail-container">
+            {/* Se van a observar datos que vienen del asyncMock / Firebase */}
+            <img className="detail-img" src={detalle.img} alt={detalle.nombreDisco} />
 
-            {/* Clase 6. Hago un render condicional en base al estado de purchase */}
-            {purchase ? <Link className='btn btn-dark' to="/cart">Ir al carrito</Link>:<ItemCount onAdd={onAdd} stock={stockActualizado}/>}
-            
+            <div className="detail-info">
+                <h1 className="detail-title">{detalle.nombreDisco}</h1>
+
+                <div className="detail-data-block">
+                    <strong>Artista: </strong>
+                    <span>{detalle.nombreBanda}</span>
+                </div>
+
+                <div className="detail-data-block">
+                    <strong>Género: </strong>
+                    <span>{detalle.description}</span>
+                </div>
+
+                <div className="detail-data-block">
+                    <strong>Precio: </strong>
+                    <span className="detail-price">
+                        {detalle.price?.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })}
+                    </span>
+                </div>
+
+                <div className="detail-data-block">
+                    <strong>Stock disponible: </strong>
+                    <span>{stockActualizado} unidades</span>
+                </div>
+                {/* Acá va el contador */}
+                {/* Clase 5 le paso la función onAdd por prop a ItemCount y el stock */}
+                {/* Esto lo tengo que tomar en ItemCount */}
+
+                {/* Clase 6. Hago un render condicional en base al estado de purchase */}
+
+                <div className="detail-actions">
+                    {purchase ? (
+                        <Link className='btn-ir-carrito' to="/cart">Ir al carrito 🛒</Link>
+                    ) : (
+                        <ItemCount onAdd={onAdd} stock={stockActualizado} />
+                    )}
+                </div>
+            </div>
         </div>
     )
 }

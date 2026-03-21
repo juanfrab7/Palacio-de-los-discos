@@ -96,7 +96,80 @@ export const productos = [
     price: 18000,
     category: "ofertas",
     img:"../the-smiths-meat-is-murder.jpg"
+    },
+
+    {
+        
+        nombreBanda: "Bandalos Chinos",
+        nombreDisco: "Vandalos",
+        description: "Rock",
+        stock: 110,
+        price: 37000,
+        category: "nuevos",
+        img:"../bandalos-chinos-vandalos.jpg"
+    },
+        {
+   
+    nombreBanda: "Pearl Jam",
+    nombreDisco: "Ten",
+    description: "Rock",
+    stock: 50,
+    price: 27000,
+    category: "oldies",
+    img:"../pearl-jam-ten.jpg"
+    },
+        {
+   
+    nombreBanda: "RadioHead",
+    nombreDisco: "Ok Computer",
+    description: "Rock",
+    stock: 150,
+    price: 14000,
+    category: "ofertas",
+    img:"../radiohead-ok-computer.jpg"
+    },
+
+    {
+   
+    nombreBanda: "Rage Against The Machine",
+    nombreDisco: "Rage Against The Machine",
+    description: "Rock",
+    stock: 250,
+    price: 19000,
+    category: "ofertas",
+    img:"../rage-against-the-machine-rage-against-the-machine.jpg"
+    },
+        {
+   
+    nombreBanda: "REM",
+    nombreDisco: "Automatic for the People",
+    description: "Rock",
+    stock: 340,
+    price: 21000,
+    category: "ofertas",
+    img:"../rem-automatic-for-the-people.jpg"
+    },
+            {
+   
+    nombreBanda: "Stone Temple Pilots",
+    nombreDisco: "Core",
+    description: "Rock",
+    stock: 140,
+    price: 16000,
+    category: "ofertas",
+    img:"../stone-temple-pilots-core.jpg"
+    },
+        {
+   
+    nombreBanda: "System of a Down",
+    nombreDisco: "Toxicity",
+    description: "Rock",
+    stock: 440,
+    price: 25000,
+    category: "ofertas",
+    img:"../system-of-a-down-toxicity.jpg"
     }
+
 ]
 
 // Acá creo la promesa

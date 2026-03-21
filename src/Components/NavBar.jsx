@@ -8,6 +8,7 @@ import logoRetrowave from '../assets/retrowave-records.jpg'
 import CartWidget from './CartWidget'
 // Componente clase 5: Importo navlink para los enlaces del navbar desde react-router-dom
 import { NavLink } from 'react-router-dom'
+import './NavBar.css';
 
 
 // Componente clase 2 - Barra de navegación Navbar
@@ -31,7 +32,7 @@ const NavBar = () => {
 
                 {/* IMAGEN PUBLIC */}
                 {/* Para Logos y favicon se recomienda el uso de public */}
-                <img src={'../retrowave-records.jpg'} alt='logo retrowave' className='anchor-nav'/> 
+                <img src={'/retrowave-records.jpg'} alt='logo retrowave' /> 
             </NavLink>
             {/*Categorías*/}
 
@@ -41,11 +42,15 @@ const NavBar = () => {
             <a className='anchor-nav' href="">Ofertas</a>
             <a className='anchor-nav' href="">Mas Vendidos</a> */}
 
-            {/* Realizo navegación con NavLink */}
-            {/* Es importante que las categorías que tengo en el navbar coincidan con las de mi objeto en asycmock */}
-            <NavLink className='anchor-nav' to="/category/nuevos">Nuevos</NavLink>
-            <NavLink className='anchor-nav' to="/category/oldies">Oldies</NavLink>
-            <NavLink className='anchor-nav' to="/category/ofertas">Ofertas</NavLink>
+            <div className='nav-menu'>
+
+                {/* Realizo navegación con NavLink */}
+                {/* Es importante que las categorías que tengo en el navbar coincidan con las de mi objeto en asycmock */}
+                <NavLink className='anchor-nav' to="/category/nuevos">Nuevos</NavLink>
+                <NavLink className='anchor-nav' to="/category/oldies">Oldies</NavLink>
+                <NavLink className='anchor-nav' to="/category/ofertas">Ofertas</NavLink>
+
+            </div>
             {/* acá llamo a CartWidget (carrito de compras) */}
             <CartWidget/>
         </nav>

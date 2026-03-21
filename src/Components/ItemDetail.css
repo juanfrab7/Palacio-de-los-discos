@@ -1,0 +1,82 @@
+/* ItemDetail.css */
+
+.detail-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.detail-img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.detail-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.detail-title {
+    font-size: 2rem;
+    color: #333;
+    margin: 0;
+    border-bottom: 2px solid #4B0082; /* Violeta del NavBar */
+    padding-bottom: 0.5rem;
+}
+
+/* Reutilizamos la lógica de bloques que te gustó */
+.detail-data-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.detail-data-block strong {
+    color: #666;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.detail-data-block span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #222;
+}
+
+.detail-price {
+    font-size: 1.8rem !important;
+    color: #198754 !important; /* Verde éxito */
+    font-weight: 800 !important;
+}
+
+.btn-ir-carrito {
+    width: 100%;
+    padding: 15px;
+    background-color: #4B0082;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-ir-carrito:hover {
+    background-color: #6a0dad;
+    transform: translateY(-3px);
+    color: white;
+}

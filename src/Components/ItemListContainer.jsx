@@ -129,11 +129,12 @@ const ItemListContainer = (props) => {
     //     .finally(()=>setLoading(false))
     // },[type])
    
-    const subirDataAFirebase = () => {
-        console.log('SUBIENDO DATA...')
-        const prodCollec = collection(db, 'discos')
-        productos.map((prod) => addDoc(prodCollec, prod))
-    }
+    // Función para subir masivamente la colección del mock a firebase
+    // const subirDataAFirebase = () => {
+    //     console.log('SUBIENDO DATA...')
+    //     const prodCollec = collection(db, 'discos')
+    //     productos.map((prod) => addDoc(prodCollec, prod))
+    // }
 
     return(
         // Hago un render condicional. Loading por defecto es False
@@ -148,7 +149,8 @@ const ItemListContainer = (props) => {
             :
         // Este es el render, es el html que devuelve el componente
             <div>
-            <button onClick={subirDataAFirebase}>SUBIR DATA</button>
+            {/* Con este botón subo masivamente los objetos de mi coleccion */}
+            {/* <button onClick={subirDataAFirebase}>SUBIR DATA</button> */}
             
             {/* Ejemplo de la clase 5 */}
             {/* <Input/> */}
