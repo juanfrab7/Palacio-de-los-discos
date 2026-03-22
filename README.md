@@ -24,7 +24,7 @@ Este proyecto es un E-commerce de discos de vinilo con estética Retrowave/Vapor
 
 ### Version Host 💻
 
-Si desea ver el proyecto online y navegar por los discos, puede ingresar al siguiente link: [Retrowave Records Live]()
+Si desea ver el proyecto online y navegar por los discos, puede ingresar al siguiente link: [Retrowave Records Live](https://retrowave-records-git-main-juanfrab7s-projects.vercel.app/)
 
 ### Librerías utilizadas 📦
 
