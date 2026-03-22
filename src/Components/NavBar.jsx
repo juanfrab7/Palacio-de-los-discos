@@ -52,7 +52,9 @@ const NavBar = () => {
 
             </div>
             {/* acá llamo a CartWidget (carrito de compras) */}
+            <NavLink  style={{textDecoration:'none', color:'black'}}to='/cart' title="Ir al carrito">
             <CartWidget/>
+            </NavLink>
         </nav>
     )
 }

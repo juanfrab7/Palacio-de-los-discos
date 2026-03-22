@@ -6,11 +6,39 @@ import { CartContext } from '../context/CartContext'
 // Para enlace formulario 
 import { Link } from 'react-router-dom'
 import './CartView.css';
+import Swal from 'sweetalert2';
 
 const CartView = () => {
   // Me traigo los datos, el clear para borrar todo el carrito y remove para borrar un elemento
   // También la función total 
   const {cart, clear, removeItem, total}= useContext(CartContext)
+
+  // Esta es una alerta previa al eliminar el carrito 
+  const preConfirm = ()=> {
+    Swal.fire({
+      title: '¿Querés borrar todo el carrito?',
+      icon:'question',
+      showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText:"No",
+    confirmButtonText: "Si"
+    // Si dice que si con el then evalúo el resultado
+    }).then((result)=>{
+      if(result.isConfirmed){
+        Swal.fire(
+          {
+            title:'Borrado!',
+            text:'Tu carrito esta vacio!',
+            icon:'success'
+          }
+        )
+        // Si dice que sí borra el carrito con la función clear
+        clear()
+      }
+    })
+  }
+
   // Acá muestro el carrito
   return (
     <div className="cart-container">
@@ -64,7 +92,8 @@ const CartView = () => {
     {/* Muestro los botones de Vaciar el carrito y terminar compra */}
     <div className="cart-buttons-container">
       {/* se usa la función clear cuando presiono el botón Vaciar Carrito */}
-      <button className="btn-custom btn-vaciar" onClick={clear}>VACIAR CARRITO</button>
+      {/* Uso preconfirm que adentro si está OK tiene la función clear */}
+      <button className="btn-custom btn-vaciar" onClick={preConfirm}>VACIAR CARRITO</button>
       {/* <button className='btn btn-success'>Terminar compra</button> */}
       {/* Enlace para terminar la compra -> Lleva al checkout */}
       <Link className="btn-custom btn-finalizar" to='/checkout'>Terminar compra</Link>

@@ -1,16 +1,37 @@
-# React + Vite
+# Retrowave Records 💿 🎸
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es un E-commerce de discos de vinilo con estética Retrowave/Vaporwave, desarrollado para el curso de React en Coderhouse.
 
-Currently, two official plugins are available:
+![app](/public/retrowave-records.jpg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Instalación ⚙️
 
-## React Compiler
+1. **Clone el repositorio:**
+   `git clone https://github.com/juanfrab7/Palacio-de-los-discos.git`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. **Muévase a la carpeta creada:**
+   `cd retrowave-records`
 
-## Expanding the ESLint configuration
+3. **Instale las dependencias:**
+   `npm install`
+   *(Esto creará la carpeta `node_modules` necesaria para el proyecto)*.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+4. **Levante la app en un entorno local:**
+   `npm run dev`
+
+> [!IMPORTANT]
+> Es necesario contar con **Node.js v22.11.0** o superior instalada para asegurar la compatibilidad.
+
+### Version Host 💻
+
+Si desea ver el proyecto online y navegar por los discos, puede ingresar al siguiente link: [Retrowave Records Live]()
+
+### Librerías utilizadas 📦
+
+- [React Bootstrap](https://react-bootstrap.github.io/): Utilizada para el layout, spinners y componentes de styling base.
+- [React Icons](https://react-icons.github.io/react-icons/): Librería de iconos para el carrito y elementos visuales.
+- [React Router Dom](https://reactrouter.com/): Utilizada para implementar la navegación por rutas (Categorías, Detalle y Checkout).
+- [Firebase](https://firebase.google.com/): Configurada como base de datos NoSQL para el catálogo de productos y la gestión de órdenes de compra.
+
+---
+Desarrollado por **Juan Francisco Barragán** 

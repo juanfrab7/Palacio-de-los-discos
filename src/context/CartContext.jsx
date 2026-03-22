@@ -1,9 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 // Componente contexto clase 6
 
 // Creo el contexto. Crea el espacio para compartir los datos globales
 export const CartContext = createContext()
+
+// Lo que agregue al carrito queda guardado en local storage
+// Si no existe , configuro que deje la variable como un array vacío
+const carritoLS = JSON.parse(localStorage.getItem('carrito')) || []
 
 // Creo el proveedor 
 
@@ -19,7 +23,14 @@ export const CartProvider = ({children}) =>{
     // La variable cart representa al carrito
 
     // Es el estado del carrito que guardamos y actualizamos los productos
-    const [cart,setCart] = useState([])
+    const [cart,setCart] = useState(carritoLS)
+
+    // Clase 8:
+    // Este hook está a la espera de cambios
+    useEffect(()=>{
+        // Creamos en el local storage un elemento que se llama carrito
+        localStorage.setItem('carrito', JSON.stringify(cart))
+    },[cart])
 
     // Clase 6: Declaro las funciones. Las paso en el provider con en el value
 
@@ -120,7 +131,7 @@ export const CartProvider = ({children}) =>{
         // Ahí le puedo hacer destructuring y le saco los datos más fácil
 
         
-        <CartContext.Provider value={{cart,addItem,clear,removeItem,itemQuantity,cartQuantity,total}}>
+        <CartContext.Provider value={{cart,addItem,clear,removeItem,itemQuantity,cartQuantity,total,CartContext}}>
             {/* adentro del provider va los que tienen permiso, lo que el provider envuelva */}
             {/* lo hago dinámico con children, todo lo que el provider envuelva lo agarra children */}
 

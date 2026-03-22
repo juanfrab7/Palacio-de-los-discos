@@ -19,6 +19,7 @@ import { CartContext } from "../context/CartContext";
 // Para ir al carrito
 import { Link } from 'react-router-dom'
 import './ItemDetail.css';
+import Swal from "sweetalert2";
 
 // Esto viene por props de ItemDetailContainer
 const ItemDetail = ({detalle}) =>{
@@ -50,6 +51,14 @@ const ItemDetail = ({detalle}) =>{
         addItem(detalle,cantidad)
         // Si compro paso setPurchase a True
         setPurchase(true)
+        Swal.fire({
+        position:'center',
+        icon:'success',
+        title:`Agregaste ${detalle.nombreDisco} al carrito`,
+        showCancelButton:false,
+        showConfirmButton:false,
+        timer:2000
+        })
     }
 
     const stockActualizado = detalle.stock - itemQuantity(detalle.id)
