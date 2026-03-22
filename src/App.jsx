@@ -11,8 +11,8 @@ import ItemCount from "./Components/ItemCount"
 import ItemListContainer from './Components/ItemListContainer'
 
 // Import de componentes de la clase 4:
-import FetchCountry from './examples/fetchCountry'
-import FetchApi from './examples/FetchApi'
+// import FetchCountry from './examples/fetchCountry'
+// import FetchApi from './examples/FetchApi'
 import ItemDetailContainer from './Components/ItemDetailContainer';
 
 // Import de librería y componentes de la clase 5: React Router dom
